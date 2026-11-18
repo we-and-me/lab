@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Connectors Lab</title>
+<meta name="description" content="A private, year-round practice space for Connectors Summit and Contribution Method alumni.">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:title" content="Connectors Lab">
+<meta property="og:description" content="Your next Summit seat, plus eleven months of practice, free. For Summit alumni only.">
+<meta property="og:image" content="https://lab.weand.me/assets/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:"AG Bold";src:local("ITC Avant Garde Gothic Pro Bold"),url(assets/avantgardebold.woff2) format("woff2");font-weight:700;font-display:swap}
+:root{
+  --blue:#1071B9;--green:#8CC640;--green-dk:#6BA51F;--purple:#903F97;--sky:#58ABDC;
+  --text:#4C4C50;--head:#3C3C3C;--pale-blue:#EDF4FA;--pale-green:#F6FAF0;--pale-purple:#F6F0F7;--pale-gray:#F2F1F3;
+  --h:"ITC Avant Garde Gothic Pro","AG Bold","Avant Garde",Figtree,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:var(--text);font:400 18px/1.6 Figtree,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+h1,h2,h3{font-family:var(--h);font-weight:700;color:var(--head);line-height:1.15;margin:0 0 .5em;letter-spacing:-.01em}
+h1{font-size:clamp(2.1rem,5vw,3.25rem)}
+h2{font-size:clamp(1.75rem,3.6vw,2.6rem)}
+h3{font-size:1.3rem}
+p{margin:0 0 1em}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+.narrow{max-width:760px}
+section{padding:88px 0}
+.sub{font-weight:700;color:var(--green-dk);font-size:1.25rem;margin-bottom:.4em}
+.btn{display:inline-block;background:var(--blue);color:#fff;font:700 1.15rem/1 Figtree,sans-serif;text-decoration:none;padding:20px 36px;border-radius:12px;border:2px solid var(--blue);box-shadow:0 10px 24px rgba(16,113,185,.25);transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(16,113,185,.32)}
+.btn.ghost{background:#fff;color:var(--blue);box-shadow:none}
+.pill{display:inline-block;background:var(--purple);color:#fff;font-weight:700;font-size:1rem;padding:8px 20px;border-radius:999px}
+
+/* hero */
+.hero{position:relative;overflow:hidden;text-align:center;padding:72px 0 96px;background:radial-gradient(ellipse at center,#fff 35%,#E4EEF8 100%)}
+.hero .stars{position:absolute;width:120px;opacity:.9}
+.hero .s1{top:44px;left:6%}
+.hero .s2{bottom:48px;right:6%;transform:scaleX(-1)}
+.hero .mark{width:min(620px,88%);margin:0 auto 28px}
+.hero h1{max-width:960px;margin:22px auto 18px}
+.hero .lede{max-width:640px;margin:0 auto 34px;font-size:1.2rem}
+.hero .fine{margin-top:18px;font-size:.95rem;color:#6a6a70}
+
+/* practice */
+.practice{background:#fff}
+.practice .grid{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center}
+.photo{border-radius:24px;overflow:hidden;box-shadow:0 18px 40px rgba(0,0,0,.12);aspect-ratio:4/3}
+.photo img{width:100%;height:100%;object-fit:cover}
+.checks{list-style:none;padding:0;margin:20px 0 0}
+.checks li{position:relative;padding-left:36px;margin-bottom:12px}
+.checks li:before{content:"";position:absolute;left:0;top:4px;width:22px;height:22px;background:url(assets/plain-green-Checkmark.svg) center/contain no-repeat}
+
+/* stack */
+.stack{position:relative;overflow:hidden;background:#F3F8FD}
+.stack .wrap{position:relative}
+.stack header{text-align:center;max-width:720px;margin:0 auto 44px}
+.wash{position:absolute;inset:0;pointer-events:none;-webkit-mask-image:linear-gradient(#000 80%,transparent);mask-image:linear-gradient(#000 80%,transparent)}
+.blob{position:absolute;border-radius:50%;filter:blur(60px);opacity:.42}
+.b1{width:520px;height:520px;background:radial-gradient(circle,#58ABDC 0%,transparent 68%);top:-140px;left:-160px;animation:drift1 22s ease-in-out infinite alternate}
+.b2{width:560px;height:560px;background:radial-gradient(circle,#B77ABD 0%,transparent 68%);top:38%;right:-240px;animation:drift2 26s ease-in-out infinite alternate}
+.b3{width:500px;height:500px;background:radial-gradient(circle,#8FC6EA 0%,transparent 68%);bottom:-200px;left:28%;animation:drift1 30s ease-in-out infinite alternate-reverse}
+@keyframes drift1{to{transform:translate(70px,50px) scale(1.08)}}
+@keyframes drift2{to{transform:translate(-80px,-40px) scale(1.1)}}
+
+/* seat + ticket (mirrors the CS26 pass graphic) */
+.seat{display:grid;grid-template-columns:1fr 1.15fr;gap:28px;align-items:center;background:linear-gradient(160deg,#2288D2,#0F69AE);border-radius:28px;padding:44px 40px;color:#fff;margin-bottom:34px;box-shadow:0 24px 40px -24px rgba(11,40,80,.55)}
+.seat h3{color:#fff;font-size:clamp(1.5rem,2.8vw,2.1rem);line-height:1.15;margin:14px 0 12px}
+.seat p{font-size:1rem;opacity:.95;margin:0}
+.vtag{display:inline-block;background:#FFF200;color:#1E1E1E;font-weight:800;font-size:.95rem;padding:5px 14px;border-radius:999px}
+.ul{background:url(assets/Single_underline.svg) left 100%/100% 12px no-repeat;padding-bottom:6px}
+.tk{position:relative;padding:12px 4px}
+.ticket{display:flex;transform:rotate(-2.5deg);border-radius:20px;box-shadow:0 26px 40px -20px rgba(0,20,50,.6);min-height:190px}
+.ticket .main{flex:1;position:relative;background:#fff;border-radius:20px 0 0 20px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:26px 22px;
+  -webkit-mask:radial-gradient(circle 13px at 100% 0,#0000 96%,#000) top/100% 51% no-repeat,radial-gradient(circle 13px at 100% 100%,#0000 96%,#000) bottom/100% 51% no-repeat;
+  mask:radial-gradient(circle 13px at 100% 0,#0000 96%,#000) top/100% 51% no-repeat,radial-gradient(circle 13px at 100% 100%,#0000 96%,#000) bottom/100% 51% no-repeat}
+.ticket .main::after{content:"";position:absolute;inset:12px 12px 12px 12px;border:2px dashed #D9CCE3;border-right:none;border-radius:12px 0 0 12px;pointer-events:none}
+.ticket .tl{font-family:var(--h);font-weight:700;font-size:clamp(1.35rem,2.6vw,1.95rem);line-height:1.1;background:linear-gradient(90deg,#1071B9,#5C5FB4 55%,#903F97);-webkit-background-clip:text;background-clip:text;color:transparent}
+.ticket .td{font-weight:700;color:var(--purple);margin-top:10px;font-size:1rem}
+.ticket .stub{width:22%;max-width:92px;background:var(--purple);border-left:3px dashed rgba(255,255,255,.55);border-radius:0 20px 20px 0;display:flex;align-items:center;justify-content:center;gap:8px;
+  -webkit-mask:radial-gradient(circle 13px at 0 0,#0000 96%,#000) top/100% 51% no-repeat,radial-gradient(circle 13px at 0 100%,#0000 96%,#000) bottom/100% 51% no-repeat;
+  mask:radial-gradient(circle 13px at 0 0,#0000 96%,#000) top/100% 51% no-repeat,radial-gradient(circle 13px at 0 100%,#0000 96%,#000) bottom/100% 51% no-repeat}
+.stub .vt,.stub .no{writing-mode:vertical-rl;transform:rotate(180deg);white-space:nowrap}
+.stub .vt{font-weight:800;color:#fff;font-size:1.05rem;letter-spacing:.14em}
+.stub .no{font-weight:700;color:#E9D3EC;font-size:.7rem;letter-spacing:.16em}
+
+/* bonus */
+.bonus-gift{position:relative;margin:20px 0;border-radius:18px;padding:20px 18px 18px;background:linear-gradient(135deg,#F6F0F7,#EDF4FA);border:2px solid #E2CFE6}
+.bonus-gift .gh{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.bonus-gift .gi{width:38px;height:38px;border-radius:12px;background:var(--purple);display:grid;place-items:center;flex:none}
+.bonus-gift .gi svg{width:22px;height:22px}
+.bonus-gift .gl{font-weight:800;color:var(--purple);font-size:.95rem}
+.bonus-gift b{display:block;font-family:var(--h);color:var(--head);font-size:1.15rem;line-height:1.25;margin-bottom:6px}
+.bonus-gift p{margin:0;font-size:.98rem}
+.ribbon{position:absolute;top:-13px;right:16px;background:var(--purple);color:#fff;font-weight:700;font-size:.8rem;padding:4px 12px;border-radius:999px}
+
+/* masterclass note + rate notes */
+.mc{margin:30px auto 0;max-width:820px;display:flex;gap:18px;align-items:flex-start;background:#fff;border:2px dashed var(--green);border-radius:24px;padding:24px 26px}
+.mc .mi{width:44px;height:44px;border-radius:14px;background:var(--green-dk);display:grid;place-items:center;flex:none}
+.mc .mi svg{width:24px;height:24px}
+.mc b{display:block;color:var(--head);font-size:1.1rem;margin-bottom:4px}
+.mc p{margin:0;font-size:1rem}
+.rate{margin:12px 0 0;font-weight:700;color:var(--purple);font-size:1.05rem}
+.renew{background:#fff;border-radius:18px;padding:18px 22px;box-shadow:0 10px 24px -18px rgba(11,40,80,.4)}
+.renew b{color:var(--head)}
+
+/* pads (borrowed from summit.weand.me) */
+.pads{display:grid;grid-template-columns:1fr 1fr;gap:26px 22px}
+.pad{display:flex;flex-direction:column;--cd:#0A5A96;--face:linear-gradient(160deg,#2288D2,#1071B9);position:relative;color:#fff;border-radius:24px;padding-bottom:10px;perspective:900px}
+.pad .base{position:absolute;left:0;right:0;bottom:0;top:10px;border-radius:24px;background:var(--cd);box-shadow:0 16px 26px -14px rgba(11,40,80,.45)}
+.pad .face{flex:1;position:relative;border-radius:24px;background:var(--face);padding:24px 24px 22px;min-height:150px;display:grid;grid-template-columns:auto 1fr;grid-template-rows:1fr auto;column-gap:18px;row-gap:12px;overflow:hidden;transition:transform .25s ease;box-shadow:inset 0 2px 0 rgba(255,255,255,.35),inset 0 -3px 0 rgba(0,0,0,.08)}
+.pad .face::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(circle 160px at var(--gx,25%) var(--gy,0%),rgba(255,255,255,.32),transparent 100%)}
+.pad .ico{width:58px;height:58px;border-radius:18px;background:rgba(255,255,255,.18);display:grid;place-items:center;box-shadow:inset 0 1px 0 rgba(255,255,255,.35);grid-row:1/3}
+.pad .ico svg{width:30px;height:30px}
+.pad .t{font-family:var(--h);font-size:1.3rem;line-height:1.15;display:block}
+.pad .d{display:block;font-size:1rem;opacity:.93;margin-top:6px;line-height:1.4}
+.pad .v{justify-self:start;background:rgba(255,255,255,.95);color:var(--head);font-weight:800;font-size:.95rem;padding:5px 14px;border-radius:999px}
+.pad:hover .face{transform:translateY(4px)}
+.pad.green{--cd:#4E7F14;--face:linear-gradient(160deg,#86BE3E,#5E9A1A)}
+.pad.sky{--cd:#2F7FB3;--face:linear-gradient(160deg,#6FBCE8,#3F96CF)}
+.pad.purple{--cd:#6A2C70;--face:linear-gradient(160deg,#A253A9,#863A8D)}
+.pad.dusk{--cd:#43418C;--face:linear-gradient(120deg,#1F7BC6 0%,#5C5FB4 55%,#8E45A0 100%)}
+.pad.wide{grid-column:1/-1;--cd:#6A2C70;--face:linear-gradient(120deg,#8E45A0 0%,#5C5FB4 60%,#1F7BC6 100%)}
+.total{position:relative;margin:40px auto 0;max-width:720px;text-align:center;background:#fff;border-radius:24px;padding:30px;box-shadow:0 14px 30px -18px rgba(11,40,80,.35)}
+.total .big{font-family:var(--h);font-size:clamp(1.8rem,4vw,2.6rem);color:var(--head)}
+.total .big s{color:#9a9aa0;text-decoration-thickness:3px}
+.total .big b{color:var(--blue);display:inline-block;transition:opacity .5s,transform .5s}
+.total.pre .big b{opacity:0;transform:scale(.8)}
+
+/* door tiles icons */
+.door .tile .ti{width:42px;height:42px;border-radius:13px;background:var(--pale-blue);color:var(--blue);display:grid;place-items:center;margin-bottom:12px}
+.door .tile .ti svg{width:24px;height:24px}
+
+/* founding callout */
+.founding{padding-top:0}
+.fcard{display:grid;grid-template-columns:auto 1fr;gap:44px;align-items:center;background:linear-gradient(125deg,#8E45A0 0%,#5C5FB4 55%,#1F7BC6 100%);border-radius:28px;padding:48px 48px;color:#fff;box-shadow:0 28px 46px -26px rgba(60,30,90,.6);position:relative;overflow:hidden}
+.fcard::before{content:"";position:absolute;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.22),transparent 70%);top:-160px;left:-120px;pointer-events:none}
+.seal-f{position:relative;width:190px;height:190px;border-radius:50%;background:#FFF200;color:#1E1E1E;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;box-shadow:0 0 0 8px rgba(255,255,255,.25),0 18px 30px -14px rgba(0,0,0,.45);transform:rotate(-8deg)}
+.seal-f::after{content:"";position:absolute;inset:10px;border-radius:50%;border:2px dashed rgba(30,30,30,.35)}
+.seal-f .s1,.seal-f .s2{font-family:var(--h);font-size:1.55rem;line-height:1.05}
+.seal-f .s3{font-weight:800;font-size:.9rem;margin-top:6px;letter-spacing:.12em}
+.fk{font-weight:700;color:#FFF200;margin:0 0 6px}
+.fcopy h2{color:#fff;margin-bottom:.4em}
+.fcopy p{opacity:.96}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px}
+.cmp .c{border-radius:18px;padding:16px 18px;display:flex;flex-direction:column}
+.cmp .you{background:#fff;color:var(--head)}
+.cmp .later{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35)}
+.cmp .cl{font-weight:700;font-size:.9rem}
+.cmp .you .cl{color:var(--purple)}
+.cmp .cp{font-family:var(--h);font-size:2rem;line-height:1.1;margin:4px 0}
+.cmp .cp small{font-family:Figtree,sans-serif;font-size:.9rem;font-weight:600;margin-left:2px}
+.cmp .later .cp{text-decoration:line-through;text-decoration-thickness:2px;opacity:.85}
+.cmp .later .cp small{display:inline-block;text-decoration:none}
+.fcopy h2{font-size:clamp(1.7rem,3vw,2.3rem)}
+.cmp .cn{font-size:.9rem}
+
+/* note */
+.note .card{display:grid;grid-template-columns:180px 1fr;gap:36px;align-items:center;background:var(--pale-purple);border-radius:24px;padding:40px}
+.note img{width:180px;height:180px;border-radius:50%;object-fit:cover;box-shadow:0 8px 20px rgba(0,0,0,.12)}
+.note blockquote{margin:0;font-size:1.2rem}
+.note .sig{font-weight:700;color:var(--purple);margin:0}
+
+/* door */
+.door{text-align:center;background:#fff}
+.door .row{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px;text-align:left}
+.door .tile{background:var(--pale-gray);border-radius:24px;padding:26px}
+.door .tile b{display:block;font-family:var(--h);color:var(--head);font-size:1.15rem;margin-bottom:6px}
+.door .tile p{font-size:1rem;margin:0}
+
+/* pricing */
+.pricing{background:linear-gradient(180deg,#58ABDC 0%,#EDF4FA 62%)}
+.pricing header{text-align:center;max-width:700px;margin:0 auto 40px}
+.pricing header h2,.pricing header p{color:#fff}
+.pricing header .pill{background:#fff;color:var(--purple)}
+.plans{display:grid;grid-template-columns:1.15fr 1fr;gap:22px;max-width:900px;margin:0 auto}
+.plan{background:#fff;border-radius:24px;padding:36px;box-shadow:0 18px 40px rgba(16,113,185,.15);display:flex;flex-direction:column}
+.plan.best{border:3px solid var(--green)}
+.plan .tag{align-self:flex-start;background:var(--green-dk);color:#fff;font-weight:700;font-size:.9rem;padding:5px 14px;border-radius:999px;margin-bottom:14px}
+.plan .price{font-family:var(--h);font-size:3rem;color:var(--head);line-height:1}
+.plan .price small{font-family:Figtree,sans-serif;font-size:1rem;color:var(--text);font-weight:400}
+.plan .bonus{background:var(--pale-green);border-radius:16px;padding:16px 18px;margin:20px 0;font-size:1rem}
+.plan .bonus b{color:var(--green-dk)}
+.plan ul{margin:18px 0 24px;padding-left:20px;font-size:1rem}
+.plan .btn{margin-top:auto;text-align:center}
+.renew{text-align:center;margin:26px auto 0;max-width:680px;font-size:1rem}
+
+/* guarantee */
+.guarantee .card{max-width:820px;margin:0 auto;text-align:center;border:3px dashed var(--green);border-radius:24px;padding:44px 36px;background:var(--pale-green)}
+.seal{width:84px;height:84px;margin:0 auto 18px;border-radius:50%;background:var(--green-dk);display:grid;place-items:center}
+.seal svg{width:44px;height:44px}
+.guarantee .card p{font-size:1.15rem;max-width:620px;margin:0 auto 1em}
+
+/* faq */
+.faq{background:#fff}
+details{border-bottom:1px solid #e3e3e8;padding:18px 0}
+summary{cursor:pointer;font-weight:700;color:var(--head);font-size:1.1rem;list-style:none;position:relative;padding-right:36px}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";position:absolute;right:4px;top:-4px;font-size:1.6rem;color:var(--blue);font-weight:400}
+details[open] summary:after{content:"\2013"}
+details p{margin:12px 0 0;font-size:1rem}
+
+/* close */
+.close{text-align:center;background:radial-gradient(ellipse at center,#fff 35%,#E4EEF8 100%)}
+.close p{max-width:600px;margin:0 auto 30px;font-size:1.15rem}
+footer{text-align:center;padding:36px 0 44px;background:#fff}
+footer img{width:84px;margin:0 auto 10px;filter:drop-shadow(0 3px 6px rgba(0,0,0,.18))}
+footer p{font-size:.9rem;color:#8a8a90;margin:0}
+
+@media (prefers-reduced-motion:reduce){.blob{animation:none}}
+@media (max-width:820px){
+  section{padding:64px 0}
+  .wrap{padding:0 16px}
+  .practice .grid,.plans,.door .row{grid-template-columns:1fr}
+  .practice .grid{gap:32px}
+  .note .card{grid-template-columns:1fr;text-align:center;padding:30px 22px}
+  .note img{margin:0 auto;width:140px;height:140px}
+  .hero{padding:56px 0 72px}
+  .hero .stars{width:46px}
+  .hero .s1{top:10px;left:3%}
+  .hero .s2{bottom:12px;right:3%}
+  .hero .mark{margin-top:18px}
+  .dk{display:none}
+  .fcard{grid-template-columns:1fr;padding:34px 22px;gap:26px;text-align:center}
+  .seal-f{width:150px;height:150px;margin:0 auto}
+  .seal-f .s1,.seal-f .s2{font-size:1.25rem}
+  .cmp{text-align:left}
+  .seat{grid-template-columns:1fr;padding:30px 20px;gap:18px}
+  .ticket{min-height:150px}
+  .ticket .main{padding:20px 14px}
+  .pads{grid-template-columns:1fr}
+  .pad .face{padding:20px 18px;column-gap:14px}
+  .pad .ico{width:48px;height:48px;border-radius:15px}
+  .pad .ico svg{width:26px;height:26px}
+  .year{padding:20px 14px 14px}
+  .months{grid-template-columns:repeat(6,1fr);row-gap:14px}
+  .plan{padding:28px 22px}
+  .btn{padding:18px 28px;width:100%;max-width:360px}
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <img class="stars s1" src="assets/sky_blue_stars.svg" alt="">
+  <img class="stars s2" src="assets/sky_blue_stars.svg" alt="">
+  <div class="wrap">
+    <img class="mark" src="assets/lab-wordmark.webp" alt="Connectors Lab">
+    <span class="pill">For Summit alumni only. Doors close Friday, December 18.</span>
+    <h1>Your next Summit seat, plus<br class="dk"> eleven months of practice, free.</h1>
+    <p class="lede">The Connectors Lab costs the same as next year’s Summit ticket. The other eleven months of practice with this group are on me.</p>
+    <a class="btn" href="https://connectors.circle.so/checkout/connectors-lab-membership">Join the Lab</a>
+    <p class="fine">Founding rate locked in for as long as you stay.</p>
+  </div>
+</section>
+
+<section class="practice">
+  <div class="wrap grid">
+    <div>
+      <p class="sub">A practice space, not another course</p>
+      <h2>Implementation matters more than ideas.</h2>
+      <p>There’s an endless amount of information online. What’s hard to find is a room where you can try something new with real people, and get honest feedback before it counts.</p>
+      <p>That’s the Lab. Bring the thing you’ve never led before. Every month you’ll put something into practice, not just add more to your notes.</p>
+      <ul class="checks">
+        <li>Lead an activity, an opening, or a full session with the group.</li>
+        <li>Get feedback from people who design rooms for a living.</li>
+        <li>Take it into your next workshop with confidence.</li>
+      </ul>
+    </div>
+    <div class="photo"><img src="assets/chad-stage-wide.webp" alt="Chad Littlefield facilitating a room full of people"></div>
+  </div>
+</section>
+
+<section class="stack">
+  <div class="wash" aria-hidden="true"><span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span></div>
+  <div class="wrap">
+    <header>
+      <p class="sub">What’s included</p>
+      <h2>Every piece is worth the price on its own.</h2>
+    </header>
+
+    <div class="seat">
+      <div class="seat-copy">
+        <span class="vtag">$997 value</span>
+        <h3>Your ticket to next year’s Summit is <span class="ul">included</span>.</h3>
+        <p>Every year you’re a member, your Connectors Summit seat comes with your Lab pass. The other eleven months are where the practice happens.</p>
+      </div>
+      <div class="tk"><div class="ticket">
+        <div class="main">
+          <span class="tl">Connectors Summit 2027</span>
+          <span class="td">Included with your Lab pass</span>
+        </div>
+        <div class="stub"><span class="no">No. 2027 · Lab</span><span class="vt">Admit one</span></div>
+      </div></div>
+    </div>
+
+    <div class="pads">
+      <div class="pad blue"><div class="base"></div><div class="face">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span>
+        <span class="tx"><span class="t">Monthly 2-hour Lab sessions</span><span class="d">Last Wednesday of each month: 11am ET, 8am PT, 5pm Central Europe.</span></span>
+        <span class="v">$1,800</span>
+      </div></div>
+      <div class="pad green"><div class="base"></div><div class="face">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="6" r="2.5"/><path d="M12 9v5M8 12l4 2 4-2"/><circle cx="4.5" cy="18" r="2"/><circle cx="19.5" cy="18" r="2"/><circle cx="12" cy="20" r="1.6"/></svg></span>
+        <span class="tx"><span class="t">The Practice Floor</span><span class="d">Small-group meetups between sessions. Lead something you’ve never led before.</span></span>
+        <span class="v">$1,500</span>
+      </div></div>
+      <div class="pad sky"><div class="base"></div><div class="face">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8" r="2.6"/><circle cx="16" cy="8" r="2.6"/><circle cx="12" cy="15" r="2.6"/><path d="M3.5 20c.5-2.5 2.5-4 4.5-4M20.5 20c-.5-2.5-2.5-4-4.5-4"/></svg></span>
+        <span class="tx"><span class="t">A small-group pod</span><span class="d">Six people who check in each quarter and notice when you stall.</span></span>
+        <span class="v">$1,200</span>
+      </div></div>
+      <div class="pad purple"><div class="base"></div><div class="face">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"/><path d="M18 15l.8 2.2 2.2.8-2.2.8L18 21l-.8-2.2-2.2-.8 2.2-.8z"/></svg></span>
+        <span class="tx"><span class="t">The AI Swap, plus my AI workflow</span><span class="d">Members trade real ways they use AI, then I walk through my own AI workflow in depth.</span></span>
+        <span class="v">$1,000+</span>
+      </div></div>
+      <div class="pad dusk"><div class="base"></div><div class="face">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4-1 10.5-10.5a2.1 2.1 0 0 0-3-3L5 16z"/><path d="M14 7l3 3"/></svg></span>
+        <span class="tx"><span class="t">Design Day with Chad</span><span class="d">Each spring: bring your session designs and get hot-seat feedback.</span></span>
+        <span class="v">$997</span>
+      </div></div>
+      <div class="pad sky"><div class="base"></div><div class="face">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v10H9l-5 4z"/><path d="M8 9h8M8 12h5"/></svg></span>
+        <span class="tx"><span class="t">Community session reviews</span><span class="d">Post a gathering on your calendar and get real-time feedback.</span></span>
+        <span class="v">$1,000</span>
+      </div></div>
+      <div class="pad green"><div class="base"></div><div class="face">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3v18"/><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor" stroke="none"/></svg></span>
+        <span class="tx"><span class="t">Half off everything</span><span class="d">50% off the Masterclass, our tools, and more, all year long.</span></span>
+        <span class="v">$1,000+</span>
+      </div></div>
+      <div class="pad blue"><div class="base"></div><div class="face">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9.5v5l4.5-2.5z" fill="currentColor"/></svg></span>
+        <span class="tx"><span class="t">Recordings and Summit replays</span><span class="d">Every Lab session is recorded, plus past Summit replays, for as long as you’re a member.</span></span>
+        <span class="v">$997</span>
+      </div></div>
+      <div class="pad wide"><div class="base"></div><div class="face">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="7" r="2.6"/><circle cx="18" cy="7" r="2.6"/><path d="M2 14.5c.6-2 2.1-3 4-3s3.4 1 4 3M14 14.5c.6-2 2.1-3 4-3s3.4 1 4 3"/><path d="M7 18.5c2.8 2.2 7.2 2.2 10 0"/><path d="M14.8 17.6l2.4.9-.5 2.5"/></svg></span>
+        <span class="tx"><span class="t">The referral room</span><span class="d">Members are encouraged to pass along overflow work, open doors, share job descriptions, and recommend each other.</span></span>
+        <span class="v">Priceless</span>
+      </div></div>
+    </div>
+
+    <div class="mc">
+      <span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-5 9 5-9 5z"/><path d="M7 11.5V16c3 2 7 2 10 0v-4.5"/></svg></span>
+      <div><b>Planning to join the Contribution Method Masterclass this spring?</b><p>Join the Lab now anyway. Lab members get half off the Masterclass, and that savings alone pays back your entire Lab fee.</p></div>
+    </div>
+
+    <div class="total">
+      <p class="sub" style="margin:0 0 6px">Total value</p>
+      <p class="big" style="margin:0"><s><span id="count" data-to="10491">$10,491</span></s> &nbsp;<b>$997</b></p>
+      <p class="rate">Founding rate, this year only. Next year the Lab goes up to $1,997.</p>
+    </div>
+  </div>
+</section>
+
+<section class="note">
+  <div class="wrap narrow">
+    <div class="card">
+      <img src="assets/chad-headshot.webp" alt="Chad Littlefield">
+      <div>
+        <blockquote>“My main intent when designing the Lab was to create a $10,000 experience at a tenth of the price. The Lab is where the learning, the magic, and the connection of the Summit keep going all year. Your toolkit never gets stale, you never have to go it alone, and every month there’s something already on your calendar that you know will re-energize you.”</blockquote>
+        <p class="sig">Chad Littlefield</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="door">
+  <div class="wrap">
+    <p class="sub">Private, never public</p>
+    <h2>Highly curated.</h2>
+    <p class="narrow" style="margin:0 auto 1em">I will never publicly advertise the Lab, and there will never be an open enrollment. The only people who will ever end up in the Lab have fully experienced the Connectors Summit or gone through the Contribution Method Masterclass, and often both.</p>
+    <p class="narrow" style="margin:0 auto">That curation is the whole point. The conversations stay deep, and it doesn’t matter who you bump into or pair up with: you’ll learn something from every person in the room. Being in the room is worth it on its own.</p>
+    <div class="row">
+      <div class="tile"><span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2.5"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></span><b>Never advertised</b><p>No ads, no public sales page, and no open enrollment. Ever.</p></div>
+      <div class="tile"><span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 20c.7-3.2 3-5 6-5s5.3 1.8 6 5"/><path d="M16 11l2 2 4-4"/></svg></span><b>Alumni only</b><p>Every member has been through the Summit or the Masterclass, often both.</p></div>
+      <div class="tile"><span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9 2h6"/></svg></span><b>One week only</b><p>The doors open for one week after the Summit. This door closes Friday, December 18.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="founding">
+  <div class="wrap">
+    <div class="fcard">
+      <div class="seal-f" aria-hidden="true"><span class="s1">Founding</span><span class="s2">member</span><span class="s3">2026</span></div>
+      <div class="fcopy">
+        <p class="fk">Founding member rate</p>
+        <h2>Lock in $997 for as long as you stay.</h2>
+        <p>This is the only year anyone can join at the founding rate. Starting next year, the Lab will be $1,997. Founding members keep paying $997 every year they stay, which saves you $1,000 a year, every year.</p>
+        <div class="cmp">
+          <div class="c you"><span class="cl">Founding members</span><span class="cp">$997<small>/yr</small></span><span class="cn">Locked in for good</span></div>
+          <div class="c later"><span class="cl">Starting next year</span><span class="cp">$1,997<small>/yr</small></span><span class="cn">For everyone else</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing" id="join">
+  <div class="wrap">
+    <header>
+      <span class="pill">Founding rate</span>
+      <h2 style="margin-top:18px">Join the Lab</h2>
+      <p>Choose the option that fits your budget this December.</p>
+    </header>
+    <div class="plans">
+      <div class="plan best">
+        <span class="tag">Best value</span>
+        <div class="price">$997 <small>paid in full</small></div>
+        <div class="bonus-gift">
+          <span class="ribbon">Pay in full</span>
+          <div class="gh"><span class="gi"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M5 12v8h14v-8M12 8v12"/><path d="M12 8c-2-3-6-3-6-.5S10 8 12 8zM12 8c2-3 6-3 6-.5S14 8 12 8z"/></svg></span><span class="gl">Founding member bonus</span></div>
+          <b>A live Summit debrief and implementation session with me</b>
+          <p>The week after the Summit, we meet live as a group so you start putting everything to work right away.</p>
+        </div>
+        <ul>
+          <li>Everything in the Lab for a full year</li>
+          <li>Your next Summit seat</li>
+          <li>Founding rate locked in</li>
+        </ul>
+        <a class="btn" href="https://connectors.circle.so/checkout/connectors-lab-membership">Join the Lab for $997</a>
+      </div>
+      <div class="plan">
+        <span class="tag" style="background:var(--blue)">Payment plan</span>
+        <div class="price">$267 <small>x 4 months</small></div>
+        <p style="margin:20px 0 0;font-size:1rem">Spread it over four months ($1,068 total) so the holidays don’t get in the way.</p>
+        <ul>
+          <li>Everything in the Lab for a full year</li>
+          <li>Your next Summit seat</li>
+          <li>Founding rate locked in</li>
+        </ul>
+        <a class="btn ghost" href="https://connectors.circle.so/checkout/connectors-lab-membership">Start with $267</a>
+      </div>
+    </div>
+    <p class="renew"><b>This is the only year you can join at $997.</b> Next year the Lab will be $1,997. Join now, and your founding rate stays locked in for as long as you stay a member.</p>
+  </div>
+</section>
+
+<section class="guarantee">
+  <div class="wrap">
+    <div class="card">
+      <div class="seal"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+      <h2>Come to three sessions. Love it, or get every dollar back.</h2>
+      <p>Show up to your first three Lab sessions. If it isn’t worth it, tell me and I’ll refund every dollar.</p>
+      <p style="font-size:1rem;margin:0 auto">The only thing I ask is that you actually show up and practice.</p>
+    </div>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="wrap narrow">
+    <h2 style="text-align:center">Questions</h2>
+    <details><summary>When does the Lab meet?</summary><p>The last Wednesday of each month for two hours, starting at 11am ET (8am PT, 5pm Central Europe). The first session is January 27, 2027: The AI Swap.</p></details>
+    <details><summary>What if I can’t make it live?</summary><p>Every session is recorded and stays in the Lab for as long as you’re a member. The Practice Floor works best live, so come when you can.</p></details>
+    <details><summary>Can I join later?</summary><p>No. The doors open for one week only, after the Summit or the Masterclass. This door closes Friday, December 18.</p></details>
+    <details><summary>Is the Summit seat really included?</summary><p>Yes. Every year you’re a member, your Connectors Summit seat is included.</p></details>
+    <details><summary>I was a Lab member last year. Is this included?</summary><p>No. You were part of the very first Lab experiment after the 2025 Connectors Summit. To stay a member, you need to register now, or you’ll lose access to everything.</p></details>
+  </div>
+</section>
+
+<section class="close">
+  <div class="wrap">
+    <h2>Keep the room going.</h2>
+    <p>You felt what happens when people stop presenting and start contributing. Let’s keep practicing together.</p>
+    <a class="btn" href="https://connectors.circle.so/checkout/connectors-lab-membership">Join the Lab</a>
+  </div>
+</section>
+
+<footer>
+  <img src="assets/master-green-sm.png" alt="We and Me">
+  <p>Connectors Lab is a private community for Connectors Summit and Contribution Method alumni.</p>
+</footer>
+
+<script>
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('.pad').forEach(function(p){
+    var f=p.querySelector('.face');
+    p.addEventListener('pointermove',function(e){var r=p.getBoundingClientRect();var x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
+      f.style.setProperty('--gx',(x*100)+'%');f.style.setProperty('--gy',(y*100)+'%');
+      if(!reduce)f.style.transform='translateY(4px) rotateX('+((.5-y)*6).toFixed(2)+'deg) rotateY('+((x-.5)*8).toFixed(2)+'deg)';});
+    p.addEventListener('pointerleave',function(){f.style.transform='';});
+  });
+  var tot=document.querySelector('.total'),c=document.getElementById('count');
+  if(!tot||!c||reduce||!('IntersectionObserver' in window))return;
+  tot.classList.add('pre');c.textContent='$0';
+  setTimeout(function(){tot.classList.remove('pre');c.textContent='$10,491'},6000);
+  var io=new IntersectionObserver(function(es){if(!es[0].isIntersecting)return;io.disconnect();
+    var to=+c.dataset.to,t0=performance.now(),dur=1400;
+    (function step(n){var k=Math.min(1,(n-t0)/dur),e=1-Math.pow(1-k,3);c.textContent='$'+Math.round(to*e).toLocaleString('en-US');
+      if(k<1)requestAnimationFrame(step);else setTimeout(function(){tot.classList.remove('pre')},250);})(t0);
+  },{threshold:.6});io.observe(tot);
+})();
+</script>
+</body>
+</html>
