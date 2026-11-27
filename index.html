@@ -149,6 +149,8 @@ section{padding:88px 0}
 .rates dd span{font-family:Figtree,sans-serif;font-size:.9rem;font-weight:600;color:var(--text)}
 .rates .muted dt{font-weight:600;color:var(--text)}
 .rates .muted dd{color:#8a8a90}
+.rates dt .when{display:block;font-weight:400;font-size:.9rem;color:var(--text)}
+.plan-rates{margin:0 0 4px}
 
 /* note */
 .note .card{display:grid;grid-template-columns:180px 1fr;gap:36px;align-items:center;background:var(--pale-purple);border-radius:24px;padding:40px}
@@ -158,6 +160,7 @@ section{padding:88px 0}
 
 /* door */
 .door{text-align:center;background:#fff}
+@media (min-width:1000px){.door h2{margin-left:-110px;margin-right:-110px}}
 .door .row{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px;text-align:left}
 .door .tile{background:var(--pale-gray);border-radius:24px;padding:26px}
 .door .tile b{display:block;font-family:var(--h);color:var(--head);font-size:1.15rem;margin-bottom:6px}
@@ -247,11 +250,11 @@ footer p{font-size:.9rem;color:#8a8a90;margin:0}
   <img class="stars s2" src="assets/sky_blue_stars.svg" alt="">
   <div class="wrap">
     <img class="mark" src="assets/lab-wordmark.webp" alt="Connectors Lab">
-    <span class="pill">For Summit alumni only. Doors close Friday, December 18.</span>
+    <span class="pill">For Lab members. Founding rate ends December&nbsp;8 at 12pm&nbsp;ET.</span>
     <h1>Your 2027 Summit seat,<br class="dk"> plus a year of practice.</h1>
     <p class="lede">The Connectors Lab is a committed, year-long community of practice, and it includes your ticket to next year’s Summit.</p>
     <a class="btn" href="https://connectors.circle.so/checkout/connectors-lab-membership">Join the Lab</a>
-    <p class="fine"><b>Founding rate available this year only,</b> then locked in for as long as you stay.</p>
+    <p class="fine"><b>Founding member rate: $997 a year,</b> locked in for as long as you stay.</p>
   </div>
 </section>
 
@@ -301,11 +304,11 @@ footer p{font-size:.9rem;color:#8a8a90;margin:0}
       </div></div>
       <div class="pad green"><div class="base"></div><div class="face">
         <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="6" r="2.5"/><path d="M12 9v5M8 12l4 2 4-2"/><circle cx="4.5" cy="18" r="2"/><circle cx="19.5" cy="18" r="2"/><circle cx="12" cy="20" r="1.6"/></svg></span>
-        <span class="tx"><span class="t">The Practice Floor</span><span class="d">Open, unstructured time between sessions. Bring your own question, or try something you’ve never led.</span></span>
+        <span class="tx"><span class="t">The Practice Floor</span><span class="d">Unstructured time between sessions for connection and practice. Bring your own question, or try something you’ve never led.</span></span>
       </div></div>
       <div class="pad sky"><div class="base"></div><div class="face">
         <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v10H9l-5 4z"/><path d="M8 9h8M8 12h5"/></svg></span>
-        <span class="tx"><span class="t">Community session reviews</span><span class="d">Post a gathering on your calendar and get real-time feedback.</span></span>
+        <span class="tx"><span class="t">Community session reviews</span><span class="d">Post a gathering on your calendar and get real-time feedback. We’re also putting more love into our online message board.</span></span>
       </div></div>
       <div class="pad blue"><div class="base"></div><div class="face">
         <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9.5v5l4.5-2.5z" fill="currentColor"/></svg></span>
@@ -340,7 +343,7 @@ footer p{font-size:.9rem;color:#8a8a90;margin:0}
 <section class="door">
   <div class="wrap narrow">
     <p class="sub">Why the Lab works</p>
-    <h2>A committed community beats a floundering DIY community every time.</h2>
+    <h2 style="text-wrap:balance">A committed community beats a floundering DIY community every&nbsp;time.</h2>
     <p>Think about the last event where the energy was really high. Someone started a WhatsApp thread or a group text so it wouldn’t end. A few weeks later, it went quiet.</p>
     <p>The Lab is built so that doesn’t happen. There’s a facilitated session on the calendar every month, open Practice Floor time in between, and everyone in the room has chosen to keep practicing.</p>
     <p style="margin:0">Every member has been through the Connectors Summit or the Contribution Method Masterclass, and often both.</p>
@@ -385,14 +388,17 @@ footer p{font-size:.9rem;color:#8a8a90;margin:0}
 <section class="pricing" id="join">
   <div class="wrap">
     <header>
-      <span class="pill">Founding rate, this year only</span>
+      <span class="pill">Founding rate ends December&nbsp;8 at 12pm&nbsp;ET</span>
       <h2 style="margin-top:18px">Join the Lab for $997 a year</h2>
-      <p>Your rate stays locked in for as long as you stay. Starting next year, membership will start at $1,997 a year.</p>
+      <p>Your rate stays locked in for as long as you stay.</p>
     </header>
     <div class="plans" style="grid-template-columns:1fr;max-width:560px">
       <div class="plan best">
-        <span class="tag">Founding member</span>
-        <div class="price">$997 <small>a year</small></div>
+        <dl class="rates plan-rates">
+          <div><dt>Founding member rate<span class="when">Lab members, until Dec 8 at 12pm ET</span></dt><dd>$997</dd></div>
+          <div class="muted"><dt>Summit early-adopter rate<span class="when">Opens at the Summit</span></dt><dd>$1,997</dd></div>
+          <div class="muted"><dt>Standard rate<span class="when">After that</span></dt><dd>$2,997</dd></div>
+        </dl>
         <div class="bonus-gift">
           <span class="ribbon">Members only</span>
           <div class="gh"><span class="gi"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M5 12v8h14v-8M12 8v12"/><path d="M12 8c-2-3-6-3-6-.5S10 8 12 8zM12 8c2-3 6-3 6-.5S14 8 12 8z"/></svg></span><span class="gl">Founding member bonus</span></div>
@@ -425,7 +431,7 @@ footer p{font-size:.9rem;color:#8a8a90;margin:0}
     <h2 style="text-align:center">Questions</h2>
     <details><summary>When does the Lab meet?</summary><p>The last Wednesday of each month for two hours, starting at 11am ET (8am PT, 5pm Central Europe). The first session is January 27, 2027: The AI Swap.</p></details>
     <details><summary>What if I can’t make it live?</summary><p>Every session is recorded and stays in the Lab for as long as you’re a member. The Practice Floor works best live, so come when you can.</p></details>
-    <details><summary>Can I join later?</summary><p>No. The doors open for one week only, after the Summit or the Masterclass. This door closes Friday, December 18.</p></details>
+    <details><summary>Can I join later?</summary><p>Yes, but not at this rate. The founding member rate ends Tuesday, December 8, at 12pm ET. At the Summit, we’ll open an early-adopter rate of $1,997 a year. After that, the standard rate is $2,997 a year.</p></details>
     <details><summary>Is the Summit seat really included?</summary><p>Yes. Every year you’re a member, your Connectors Summit seat is included.</p></details>
     <details><summary>I was a Lab member last year. Is this included?</summary><p>No. You were part of the very first Lab experiment after the 2025 Connectors Summit. To stay a member, you need to register now, or you’ll lose access to everything.</p></details>
   </div>
